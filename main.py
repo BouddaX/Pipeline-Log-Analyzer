@@ -36,13 +36,6 @@ def main() -> None:
 
         saved = save_attempts(attempts)
         failed_by_country, successful_by_user, invalid_failures = dashboard_data()
-        dashboard_path = create_dashboard(
-            failed_by_country,
-            successful_by_user,
-            invalid_failures,
-            project_dir / "reports",
-        )
-
         print(f"Log lines read: {len(rows):,}")
         print(f"Authentication log rows recognized: {len(attempts):,}")
         print(f"Rows inserted or refreshed in PostgreSQL: {saved:,}")
@@ -53,7 +46,14 @@ def main() -> None:
         for username, count in successful_by_user:
             print(f"  {username}: {count:,}")
         print(f"Failed attempts for invalid users: {invalid_failures:,}")
-        print(f"Dashboard created: {dashboard_path}")
+        print("Opening the Matplotlib dashboard; close its window to finish.")
+        chart_path = create_dashboard(
+            failed_by_country,
+            successful_by_user,
+            invalid_failures,
+            project_dir / "reports",
+        )
+        print(f"Dashboard image saved to: {chart_path}")
     except Exception:
         logger.exception("Pipeline failed")
         raise

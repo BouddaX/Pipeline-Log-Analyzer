@@ -27,7 +27,7 @@ Le code est organisé en modules afin de séparer la lecture, l’extraction, le
 ├── processing/extract_transform.py # Extraction des tentatives avec re
 ├── storage.py                    # Connexion, insertion et requêtes PostgreSQL
 ├── schema.sql                    # Tables et index PostgreSQL
-├── dashboard.py                  # Graphiques et page HTML
+├── dashboard.py                  # Graphiques PNG du dashboard
 ├── main.py                       # Lancement du pipeline
 └── reports/                      # Dashboard généré
 ```
@@ -85,7 +85,7 @@ python main.py
 
 Le programme lit les fichiers, reconnaît les lignes d’authentification SSH, enregistre les tentatives dans PostgreSQL et affiche les agrégations. Les lignes répétées identiques ne créent pas de doublons. Si vous ajoutez ensuite une correspondance IP/pays, relancez le programme pour actualiser le pays de ces tentatives.
 
-Le dashboard est créé dans `reports/dashboard.html`, avec son graphique dans `reports/dashboard.png`. Ouvrir le fichier HTML dans un navigateur.
+Le dashboard est créé dans `reports/dashboard.png`. Ouvrir l’image dans un navigateur ou un visionneur d’images.
 
 ## Données enregistrées
 
